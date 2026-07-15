@@ -9,12 +9,17 @@
   <body>
     <div id="root"></div>
     <script>
-      // Decode the path encoded by 404.html and restore it for React Router
+      // Restore path encoded by 404.html, keeping the /AWS-SAA-C03-Prep base intact
       (function() {
-        var p = window.location.search.slice(1);
-        if (p && p.indexOf('p=') === 0) {
-          var path = decodeURIComponent(p.slice(2));
-          window.history.replaceState(null, null, '/' + path);
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get('p');
+        var h = params.get('h');
+        if (p !== null) {
+          var base = window.location.pathname.replace(/\/$/, '');
+          window.history.replaceState(
+            null, null,
+            base + '/' + decodeURIComponent(p) + (h ? '#' + decodeURIComponent(h) : '')
+          );
         }
       })();
     </script>
