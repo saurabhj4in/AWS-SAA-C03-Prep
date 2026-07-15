@@ -4,14 +4,15 @@
     <meta charset="utf-8" />
     <title>AWS SAA-C03 Prep</title>
     <script>
-      // GitHub Pages SPA redirect: encode the path into the query string so
-      // index.html can pick it up and hand it to React Router.
+      // GitHub Pages SPA redirect: send deep links back through index.html.
+      // Slice at depth 2 (/AWS-SAA-C03-Prep) so the base stays intact.
       var l = window.location;
+      var base = l.pathname.split('/').slice(0, 2).join('/');
+      var rest = l.pathname.slice(base.length);
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 2).join('/') +
-        '/?p=' + encodeURIComponent(l.pathname.slice(1) + l.search) +
-        '#' + l.hash.slice(1)
+        base + '/?p=' + encodeURIComponent(rest + l.search) +
+        (l.hash ? '&h=' + encodeURIComponent(l.hash.slice(1)) : '')
       );
     </script>
   </head>

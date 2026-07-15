@@ -5,18 +5,23 @@
     <link rel="icon" type="image/svg+xml" href="/AWS-SAA-C03-Prep/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AWS SAA-C03 Prep</title>
-    <script type="module" crossorigin src="/AWS-SAA-C03-Prep/assets/index-CdMdwwhP.js"></script>
+    <script type="module" crossorigin src="/AWS-SAA-C03-Prep/assets/index-ghwl-pYt.js"></script>
     <link rel="stylesheet" crossorigin href="/AWS-SAA-C03-Prep/assets/index-SjZ_urau.css">
   </head>
   <body>
     <div id="root"></div>
     <script>
-      // Decode the path encoded by 404.html and restore it for React Router
+      // Restore path encoded by 404.html, keeping the /AWS-SAA-C03-Prep base intact
       (function() {
-        var p = window.location.search.slice(1);
-        if (p && p.indexOf('p=') === 0) {
-          var path = decodeURIComponent(p.slice(2));
-          window.history.replaceState(null, null, '/' + path);
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get('p');
+        var h = params.get('h');
+        if (p !== null) {
+          var base = window.location.pathname.replace(/\/$/, '');
+          window.history.replaceState(
+            null, null,
+            base + '/' + decodeURIComponent(p) + (h ? '#' + decodeURIComponent(h) : '')
+          );
         }
       })();
     </script>
