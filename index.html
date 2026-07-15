@@ -8,21 +8,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <script>
-      // Restore path encoded by 404.html, keeping the /AWS-SAA-C03-Prep base intact
-      (function() {
-        var params = new URLSearchParams(window.location.search);
-        var p = params.get('p');
-        var h = params.get('h');
-        if (p !== null) {
-          var base = window.location.pathname.replace(/\/$/, '');
-          window.history.replaceState(
-            null, null,
-            base + '/' + decodeURIComponent(p) + (h ? '#' + decodeURIComponent(h) : '')
-          );
-        }
-      })();
-    </script>
-    <script type="module" src="/src/main.jsx"></script>
+<script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
